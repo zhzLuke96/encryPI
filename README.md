@@ -1,9 +1,15 @@
 # Encrypt in π
+encryπ! Put your files in π! ? This tool can encrypt your files into PI! And quickly recover your encrypted information.
+
+However, cost is obvious, you need at least twice the space of the source file to store your encrypted content...
+
+but, this idea is very interesting, isn't it? you can check out the [project(pifs)](https://github.com/philipl/pifs).
+
+# π
 PI is a magic number, it seems to be a combination, contains unlimited possibilities(decimal part), and can even be used as a random number generator. But no one can prove it
 
-However, here we have by default it has been proven, because at least before 1 billion, it seems to be desirable
-
-> Combined：a number containing all combinations of numbers, called the "combined number"
+> However, here we have by default it has been proven, because at least before 1 billion, it seems to be desirable<br>
+> `Combined：a number containing all combinations of numbers, called the "combined number"`
 
 # todo
 - [x]base

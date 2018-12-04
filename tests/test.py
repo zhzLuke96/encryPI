@@ -4,26 +4,29 @@ sys.path.append('..')
 from src.encrypi import encrypt, dump, dedump, decrypt
 
 
-def encrypi_mod(test_str):
-    assert isinstance(test_str, str), 'value err'
-    src_text = test_str.encode()
-    cipher_ls = encrypt(src_text)
+def encrypi_mod(test_bytes):
+    assert isinstance(test_bytes, bytes), 'value err'
+    cipher_ls = encrypt(test_bytes)
 
     dump_bytes = dump(cipher_ls)
     src_ls = dedump(dump_bytes)
     assert src_ls == cipher_ls, f'cipher_ls => dedump \n {cipher_ls} => {src_ls}'
 
     decrypt_text = decrypt(src_ls)
-    assert decrypt_text == src_text, f'encrypt => decrypt \n {src_text} => {decrypt_text}'
+    assert decrypt_text == test_bytes, f'encrypt => decrypt \n {test_bytes} => {decrypt_text}'
 
 
 def main():
-    encrypi_mod('hello world!!')
+    encrypi_mod(b'hello world!!')
     # ascii
-    encrypi_mod('中文测试')
+    encrypi_mod('中文测试'.encode())
     # unicode
-    encrypi_mod('')
+    encrypi_mod(b'')
     # empty input
+    encrypi_mod(b'\0')
+    # \o input
+    encrypi_mod(b'\0' * 16)
+    # mulit \0
 
     # # encrypt test
     # file_encrypt('readme.md')
