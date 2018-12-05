@@ -1,20 +1,24 @@
 from .main import encrypt, decrypt, dump, dedump
-from .mode import pi as default_mode
+# from .mode import pi as default_mode
 __all__ = ("file_encrypt", "file_decrypt")
 from .fsize import file_size
+
+
+def mod_loader(name):
+    name = name.lower()
+    m = __import__('mode.' + name, globals(), level=1)
+    g = getattr(m, name)
+    return g.get_byte
 
 
 def file_encrypt(file_name, output=None, mode=None):
     # default_mode
     if mode is None:
-        get_byte = default_mode.get_byte
-    else:
-        m = __import__('mode.' + mode, globals(), level=1)
-        g = getattr(m, mode)
-        get_byte = g.get_byte
+        mode = 'pi'
+    get_byte = mod_loader(mode)
     # default output name
     if output is None:
-        output = file_name + '.pi'
+        output = file_name + f'.{mode}'
     # encrypt
     with open(file_name, "rb") as rf, open(output, 'wb+') as wf:
         ciphertext = encrypt(rf.read(), get_byte)
@@ -25,9 +29,8 @@ def file_encrypt(file_name, output=None, mode=None):
 def file_decrypt(file_name, output=None, mode=None):
     # default_mode
     if mode is None:
-        get_byte = default_mode.byte.get_byte
-    else:
-        get_byte = mode.byte.get_byte
+        mode = 'pi'
+    get_byte = mod_loader(mode)
     # default output name
     if output is None:
         output = file_name + '.de'
