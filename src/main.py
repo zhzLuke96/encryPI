@@ -1,11 +1,11 @@
-from .pi_byte import get_byte
+
 from .cache import LRU
 
-__all__ = ("encrypt", "decrypt", "dump", "dedump")
+__all__ = ("encrypt", "decrypt")
 
 
 @LRU(255)
-def find(bt_idx):
+def find(bt_idx, get_byte):
     assert isinstance(bt_idx, int), 'type error'
     idx = 0
     while True:
@@ -15,18 +15,19 @@ def find(bt_idx):
         idx += 1
 
 
-def encrypt(bs):
+def encrypt(bs, get_byte):
     assert isinstance(bs, bytes), 'type error'
     cipherls = []
     # bin ciphertext
     for tbin in bs:
-        ct = find(tbin)
+        ct = find(tbin, get_byte)
         cipherls.append(ct)
-    return cipherls
+    return dump(cipherls)
 
 
-def decrypt(idxs):
-    assert isinstance(idxs, list), 'type error'
+def decrypt(bts, get_byte):
+    assert isinstance(bts, bytes), 'type error'
+    idxs = dedump(bts)
     srctext = b''
     # bin src
     for tidx in idxs:

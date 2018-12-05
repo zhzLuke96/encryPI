@@ -1,7 +1,7 @@
 import sys
 sys.path.append('..')
 # from ..src.file import file_encrypt, file_decrypt
-from src.encrypi import encrypt, dump, dedump, decrypt
+from src.mode.pi.pi import encrypt, dump, dedump, decrypt
 
 
 def encrypi_mod(test_bytes):

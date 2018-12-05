@@ -12,13 +12,14 @@ def series(m, idx):
     for k in range(idx):
         ak = 8 * k + m
         p = idx - k
-        t = 16 ** p % ak
+        t = (16 ** p) % ak
         s = s + t / ak
         s = s - int(s)
     # idx到无穷的part
     for k in range(idx, idx + 100):
         ak = 8 * k + m
-        t = (16**(idx - k)) / ak
+        p = idx - k
+        t = (16 ** p) / ak
         if t < __eps__:
             break
         s = s + t

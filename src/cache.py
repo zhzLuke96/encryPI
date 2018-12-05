@@ -42,13 +42,3 @@ class LRU:
                 ret = self.cache[key]
             return ret
         return warpper
-
-
-# @LRU()
-# def fib(n):
-#     return 1 if n < 2 else fib(n - 1) + fib(n - 2)
-#
-#
-# if __name__ == '__main__':
-#     for i in range(100):
-#         print(fib(i))

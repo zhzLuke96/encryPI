@@ -13,9 +13,9 @@ PI is a magic number, it seems to be a combination, contains unlimited possibili
 
 # todo
 - [x]base
+- [ ]more formula: e;log2;ln 以及别的真正的合取数
 - [ ]cli
 - [ ]gzip lztm
-- [ ]more formula: e;log2;ln 以及别的真正的合取数
 
 > 加密的压缩率很惊人，几乎两倍于源文件，也许可以找到更好的方法改造一下？
 
